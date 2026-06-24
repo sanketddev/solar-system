@@ -126,4 +126,4 @@ jobs:
               echo $IP
 
               echo "Verifying /live endpoint"
-              wget -q -O 127.0.0.1:3000/live | grep live
+              wget -q -O http://127.0.0.1:3000/live | grep live
