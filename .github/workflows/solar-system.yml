@@ -118,9 +118,9 @@ jobs:
               docker run --name solay-system-app -d \
                    -p 3000:3000 \
                    -e MONGO_URI=$MONGO_URI \
-                   -e MONGO_USERNAME:$MONGO_USERNAME \
-                   -e MONGO_PASSWORD:$MONGO_PASSWORD \
+                   -e MONGO_USERNAME=$MONGO_USERNAME \
+                   -e MONGO_PASSWORD=$MONGO_PASSWORD \
                    ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
 
               echo "Verifying /live endpoint"
-              wget -q -O http://127.0.0.1:3000/live | grep live
+              wget -q -O - http://127.0.0.1:3000/live | grep live
