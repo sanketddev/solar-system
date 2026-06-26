@@ -7,6 +7,10 @@ on:
             - main
             - 'feature/*'
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
     MONGO_URI: ${{ secrets.MONGO_URI }}
     MONGO_USERNAME:  ${{ secrets.MONGO_USERNAME }}
@@ -171,7 +175,25 @@ jobs:
         - name: Checkout Repository
           uses: actions/checkout@v7
 
+        - name: Configure AWS (OIDC)
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+            aws-region: ${{ vars.AWS_REGION }}
+
         - name: Install Kubectl CLI
           uses: azure/setup-kubectl@v4
           with:
             version: v1.36.0
+
+        - name: Configure kubeconfig
+          run: | 
+            aws eks update-kubeconfig --region ap-south-1 --name solar-system
+
+        - name: Verify Cluster Connection
+          run: | 
+            kubectl version 
+            echo "------------------------------------------" 
+            kubectl get nodes 
+            echo "------------------------------------------"
+            kubectl get namespaces
