@@ -189,7 +189,7 @@ jobs:
           env:
              NAMESPACE: ${{ vars.NAMESPACE }}
              REPLICAS: ${{ vars.REPLICAS }}
-             IMAGE: ${{ env.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+             IMAGE: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
              INGRESS_HOSTNAME: ${{ env.INGRESS_HOSTNAME }}
 
         - name: Verify replaced manifests
