@@ -185,7 +185,7 @@ jobs:
           with:
             tokenPrefix: '_{_'
             tokenSuffix: '_}_'
-            files: '["kubernetes/development/*"]'
+            files: '["k8s/development/*"]'
           env:
              NAMESPACE: ${{ vars.NAMESPACE }}
              REPLICAS: ${{ vars.REPLICAS }}
@@ -207,5 +207,5 @@ jobs:
 
         - name: Deploy to Dev Environment
           run: |
-            kubectl apply -f kubernetes/developmnet
+            kubectl apply -f k8s/developmnet
     
