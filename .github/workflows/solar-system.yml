@@ -232,3 +232,4 @@ jobs:
             echo $URL
             echo "--------------------------------------------"
             curl http://$URL/live -s -k | jq -r .status | grep -i live
+            
