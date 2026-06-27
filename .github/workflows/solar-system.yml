@@ -286,7 +286,7 @@ jobs:
              INGRESS_HOSTNAME: ${{ env.INGRESS_HOSTNAME }}
 
         - name: Verify replaced manifests
-          run: cat kubernetes/development/*.yaml
+          run: cat kubernetes/production/*.yaml
 
         - name: Create MongoDB Secret
           run: |
