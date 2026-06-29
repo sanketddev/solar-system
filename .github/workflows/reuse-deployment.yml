@@ -17,6 +17,11 @@ on:
         required: true
       AWS_ROLE_ARN:
         required: true
+    outputs:
+      application-url:
+        value: ${{ jobs.reuse-deploy.outputs.APP_INGRESS_URL}}
+
+
 
 permissions:
   id-token: write

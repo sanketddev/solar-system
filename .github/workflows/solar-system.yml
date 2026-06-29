@@ -164,7 +164,7 @@ jobs:
         steps:
             - name: Test Dev Endpoint
               env:
-                URL: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+                URL: ${{ needs.dev-deploy.outputs.application-url }}
               run: |
                 echo "Testing: https://$URL/live"
                 for i in {1..60}; do
@@ -195,7 +195,7 @@ jobs:
         steps:
             - name: Test Production Endpoint
               env:
-                URL: ${{ needs.prod-deploy.outputs.APP_INGRESS_URL }}
+                URL: ${{ needs.prod-deploy.outputs.application-url }}
               run: |
                 echo "Testing: https://$URL/live"
                 for i in {1..60}; do
