@@ -2,6 +2,10 @@ name: Deployment - Reusable Workflow
 
 on:
     workflow_call:
+      inputs:
+        environment:
+          required: true
+          type: string
 
 permissions:
   id-token: write
@@ -11,7 +15,7 @@ permissions:
 jobs:
     reuse-dev-deploy:
         environment:
-          name: development
+          name: ${{ inputs.environment }}
           url: https://${{ steps.set-ingress-host.outputs.APP_INGRESS_URL }}
         outputs:
           APP_INGRESS_URL: ${{ steps.set-ingress-host.outputs.APP_INGRESS_URL }}
@@ -152,7 +156,7 @@ jobs:
 
     reuse-prod-deploy:
         environment:
-          name: production
+          name: ${{ inputs.environment }}
           url: https://${{ steps.set-ingress-host.outputs.APP_INGRESS_URL }}
         outputs:
           APP_INGRESS_URL: ${{ steps.set-ingress-host.outputs.APP_INGRESS_URL }}
