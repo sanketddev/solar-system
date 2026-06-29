@@ -151,7 +151,9 @@ jobs:
         uses: ./.github/workflows/reuse-deployment.yml
         with:
           environment: development
-        secrets: inherit
+        secrets:
+          mongodb-uri: ${{ secrets.MONGO_URI}}
+          mongodb-password: ${{ secrets.MONGO_PASSWORD}}
 
     dev-integration-testing:
         if: contains(github.ref, 'feature/')
@@ -179,7 +181,9 @@ jobs:
         uses: ./.github/workflows/reuse-deployment.yml
         with:
           environment: production
-        secrets: inherit
+        secrets:
+          mongodb-uri: ${{ secrets.MONGO_URI}}
+          mongodb-password: ${{ secrets.MONGO_PASSWORD}}
 
     prod-integration-testing:
         if: github.ref == 'refs/heads/main'
