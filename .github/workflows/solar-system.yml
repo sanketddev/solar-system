@@ -149,6 +149,7 @@ jobs:
         if: contains(github.ref, 'feature/')
         needs: docker
         uses: ./.github/workflows/reuse-deployment.yml
+        secrets: inherit
 
     dev-integration-testing:
         if: contains(github.ref, 'feature/')
@@ -174,6 +175,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         needs: docker
         uses: ./.github/workflows/reuse-deployment.yml
+        secrets: inherit
 
     prod-integration-testing:
         if: github.ref == 'refs/heads/main'
