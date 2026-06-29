@@ -154,6 +154,7 @@ jobs:
         secrets:
           mongodb-uri: ${{ secrets.MONGO_URI}}
           mongodb-password: ${{ secrets.MONGO_PASSWORD}}
+          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
 
     dev-integration-testing:
         if: contains(github.ref, 'feature/')
@@ -184,6 +185,7 @@ jobs:
         secrets:
           mongodb-uri: ${{ secrets.MONGO_URI}}
           mongodb-password: ${{ secrets.MONGO_PASSWORD}}
+          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
 
     prod-integration-testing:
         if: github.ref == 'refs/heads/main'
